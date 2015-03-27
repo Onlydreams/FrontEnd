@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="Pragma" content="no-cache" /> 
+  <meta http-equiv="Cache-Control" content="no-cache" /> 
+  <link rel="stylesheet" href="bootstrap/3.3.1/css/bootstrap.min.css" /> 
+  <link rel="stylesheet" href="font-awesome/4.3.0/css/font-awesome.min.css" /> 
+ </head> 
+ <body> 
+  <h1>Hello Plunker!</h1> 
+  <div ng-controller="ProjectCtrl"> 
+   <div class="container bs-docs-container"> 
+    <div id="project" class="row"> 
+     <div class="col-sm-6 col-md-4 col-lg-4 cell-project" ng-repeat="project in projects"> 
+      <div class="panel panel-primary panel-project">
+        {{project}} 
+       <div class="panel-heading" ng-switch="project.PermissionStatus"> 
+        <span ng-bind="project.ProjectName"></span> 
+        <i class="fa fa-gear i-setup" ng-switch-when="1" data-toggle="modal" data-target="#myModal{{project.Id}}"></i> 
+        <i class="fa i-setup" ng-switch-when="0" ng-class="{'fa-star': project.CollectionStatus == 1,  'fa-star-o': project.CollectionStatus == 0 }" ng-click="updateStatus(project)"></i> 
+       </div> 
+      </div> 
+      <div class="modal" id="myModal{{project.Id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> 
+       <div class="modal-dialog" style="z-index: 1050"> 
+        <div class="modal-content"> 
+         <div class="modal-header"> 
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button> 
+          <h4 class="modal-title" id="myModalLabel">{{project.ProjectName}}</h4> 
+         </div> 
+         <div class="modal-body">
+           {{project}} 
+         </div> 
+         <div class="modal-footer"> 
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> 
+          <button type="button" class="btn btn-primary">Save changes</button> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+  </div> 
+  <script src="./jquery/2.1.3/jquery.min.js"></script> 
+  <script src="./angularjs/1.3.6/angular.js"></script> 
+  <script src="./angularjs/1.3.6/angular-sanitize.min.js"></script> 
+  <script src="./angularjs/1.3.6/angular-animate.min.js"></script> 
+  <script src="./angularjs/1.3.6/angular-route.min.js"></script> 
+  <script src="./bootstrap/3.3.1/js/bootstrap.min.js"></script> 
+  <script src="./angular-strap/scripts/libraries.min.js"></script> 
+  <script src="./angular-strap/scripts/angular-strap.min.js"></script> 
+  <script src="./angular-strap/scripts/angular-strap.tpl.min.js"></script> 
+  <script src="./angular-strap/scripts/docs.min.js"></script> 
+  <script src="./angular-strap/scripts/docs.tpl.min.js"></script> 
+  <script src="./angular-strap/scripts/demo.tpl.min.js"></script> 
+  <script src="script.js"></script>  
+ </body>
+</html>
